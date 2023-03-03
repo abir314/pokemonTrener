@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            height: 100px;
+            width: auto;
+        }
+    </style>
+    <script src="resetFunction.js"></script>
+    <script src="goInForest.js"></script>
+
+</head>
+<body>
+    
+    <h2>Pokemon trainer</h2>
+    <div id="app"></div>
+    <script type="text/javascript">
+        let infoDiv = document.getElementById('app');
+        let myImage = '<img src="ash.jpeg" alt="Pokemon Trainer"/>';
+        let newMyImage = myImage;
+        let forest='';
+        let fightTrainer;
+        let meetPokemons;
+        let button;
+  
+        let buttonDisabled1;
+        let buttonDisabled2;
+  
+
+        let ashsPokemon =[{
+            id: 1,
+            name: 'pikachu',
+            imageSrc: 'pikachu.jpeg',
+            abilities: [{name: 'singleThunder', power: 30}, {name: 'fullThunder', power: 60}],
+            health: 100
+
+        }];
+        let randomPokemns = [{
+            id: 1,
+            name: 'charmander',
+            imageSrc: 'charmander.jpeg',
+            abilities: [{name: 'singleFireball', power: 40}, {name: 'fullFireball', power: 75}],
+            health: 100
+
+            },
+            {
+            id: 2,
+            name: 'meowth',
+            imageSrc: 'meowth.png',
+            abilities: [{name: 'singleScratch', power: 20}, {name: 'fullScratch', power: 45}],
+            health: 100
+            },
+            {
+            id: 3,
+            name: 'arbok',
+            imageSrc: 'arbok.webp',
+            abilities: [{name: 'singleBite', power: 35}, {name: 'fullBite', power: 55}],
+            health: 100
+            }
+    
+        ];
+        function getRandomNumber (min, max){
+            return Math.floor(Math.random()*(max-min+1));
+
+        }
+
+        show();
+        function show(){
+            infoDiv.innerHTML = /*html*/ `
+                ${myImage ? myImage : ''}<br/><br/>
+                <button onclick="goInForest()" ${buttonDisabled1 ? buttonDisabled1 :''}>Go in grass</button>
+                <button onclick="fightOtherTrainer()" ${buttonDisabled2 ? buttonDisabled2 :''}>Fight another pokemon trainer</button><br/>
+                <div>${forest ? forest : ''}</div>
+                <div>${fightTrainer ? fightTrainer : ''}</div>
+            `;
+        }
+
+        
+
+        
+
+    </script>
+</body>
+</html>
