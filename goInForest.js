@@ -1,8 +1,11 @@
 function goInForest(){
     // meetCounter = 0;
+
+    fightTrainer='';
      
      myImage = '';
-     buttonDisabled1 = 'disabled'
+     buttonDisabled1 = 'disabled';
+     buttonDisabled2 = '';
      facePokemons();
     }
 
@@ -24,7 +27,7 @@ function goInForest(){
      `;
  
  }
- else forest = '<h3>There are no more pokemons. Start again! <br/><br/><button onclick="reset()">Reset</button></h3>'
+ else forest = '<h3>There are no more pokemons. Start again! Or fight another pokemon trainer. <br/><br/><button onclick="reset()">Reset</button></h3>'
      show();
      
  }
@@ -52,9 +55,9 @@ function goInForest(){
     
 
      forest = `${newMyImage}<img src="${randomPokemns[index].imageSrc}"/><br/>
-                 <p>Choose one of your pokemon randomly.</p><button onclick="choosePokemon(${index})">Choose</button>`;
+                 <p>Choose one of your pokemons.</p><button onclick="selectYourPokemon(${index})">Choose</button>`;
      }
-     else forest = '<h3>There are no more pokemons. Start again! <br/><br/><button onclick="reset()">Reset</button></h3>'
+     else forest = '<h3>There are no more pokemons. Start again! Or fight another pokemon trainer. <br/><br/><button onclick="reset()">Reset</button></h3>'
 
 
      show();
@@ -62,16 +65,29 @@ function goInForest(){
 
  }
 
- function choosePokemon(index){
+ function selectYourPokemon(index){
+    forest = `${newMyImage}<img src="${randomPokemns[index].imageSrc}"/><br/> <p>Choose one of your pokemons.<p>`;
+    for(let i = 0; i<ashsPokemon.length; i++){
+        forest += /*html*/`
+                    
+                    <img src="${ashsPokemon[i].imageSrc}" onclick="choosePokemon(${index}, ${i})"/>
+        `;
+    }
 
-     let pokemonIndex = getRandomNumber(0, ashsPokemon.length-1);
-     console.log(pokemonIndex, index);
+    show();
+}
+
+ function choosePokemon(index, pokemonIndex){
+
+     //let pokemonIndex = getRandomNumber(0, ashsPokemon.length-1);
+     //console.log(pokemonIndex, index);
      
      let choosenPokemon = ashsPokemon[pokemonIndex];
      
      newMyImage = choosenPokemon.imageSrc;
 
      forest = `<img src="${newMyImage}"/><img src="${randomPokemns[index].imageSrc}"/><br/>
+                <h4>Your pokeball randomly chose ${choosenPokemon.name} to fight against ${randomPokemns[index].name}.</h4>
                  <button id="startBattleButtonId" onclick="startBattle(${pokemonIndex}, ${index})">Commence Fight</button>`;
 
 
@@ -107,16 +123,18 @@ function goInForest(){
      if(ashsPokemonPower > facedPokemonPower) {
          ashsPokemonHealth = ashsPokemonHealth;
          facedPokemonHealth -= (ashsPokemonPower - facedPokemonPower);
-         winningText = `<p>Your pokemon used "${ashsPokemonAbility.name}" ability and the enemy pokemon used
-             "${facedPokemonAbility.name}" and you have won. Wait for the next encounter.</p>`; 
+         winningText = `<p>${ashsPokemon[ashsPokemonIndex].name} used "${ashsPokemonAbility.name}" ability and 
+                        ${randomPokemns[facedPokemonIndex].name} used
+             "          ${facedPokemonAbility.name}" and you have won. </p><br/><h4>Wait for the next encounter.</h4>`; 
      }
 
      else if (ashsPokemonPower < facedPokemonPower) {
          facedPokemonHealth = facedPokemonHealth;
          ashsPokemonHealth -= (facedPokemonPower - ashsPokemonPower);
 
-         winningText = `<p>Your pokemon used "${ashsPokemonAbility.name}" ability and the enemy pokemon used
-             "${facedPokemonAbility.name}" and you have lost. Wait for the next encounter.</p>`; 
+         winningText = `<p>${ashsPokemon[ashsPokemonIndex].name} used "${ashsPokemonAbility.name}" ability and 
+                        ${randomPokemns[facedPokemonIndex].name} used
+                        "${facedPokemonAbility.name}" and you have lost. </p><br/><h4>Wait for the next encounter.</h4>`; 
      }
      
      forest = /*html*/` <img src="${newMyImage}"/><img src="${randomPokemns[facedPokemonIndex].imageSrc}"/>
