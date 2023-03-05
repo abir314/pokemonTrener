@@ -13,6 +13,7 @@
     </style>
     <script src="resetFunction.js"></script>
     <script src="goInForest.js"></script>
+    <script src="fightOtherTrainers.js"></script>
 
 </head>
 <body>
@@ -27,6 +28,8 @@
         let fightTrainer;
         let meetPokemons;
         let button;
+        let mistysImage = '<img src="misty.png" alt="Pokemon Trainer"/>';
+        let opponentImage = mistysImage;
   
         let buttonDisabled1;
         let buttonDisabled2;
@@ -40,6 +43,38 @@
             health: 100
 
         }];
+        let mistysPokemon = [{
+            id: 1,
+            name: 'psyduck',
+            imageSrc: 'psyduck.png',
+            abilities: [{name: 'singleScream', power: 35}, {name: 'fullScream', power: 65}],
+            health: 100
+
+            },
+            {
+            id: 2,
+            name: 'togepi',
+            imageSrc: 'togepi.png',
+            abilities: [{name: 'singleShell', power: 15}, {name: 'fullShell', power: 30}],
+            health: 100
+            },
+            {
+            id: 3,
+            name: 'gyarados',
+            imageSrc: 'gyarados.png',
+            abilities: [{name: 'singleWaterStrike', power: 32}, {name: 'fullWaterStrike', power: 64}],
+            health: 100
+            },
+            {
+            id: 4,
+            name: 'staryu',
+            imageSrc: 'staryu.webp',
+            abilities: [{name: 'singleClash', power: 22}, {name: 'fullClash', power: 45}],
+            health: 100
+
+        }
+    
+        ];
         let randomPokemns = [{
             id: 1,
             name: 'charmander',
