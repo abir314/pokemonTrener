@@ -89,7 +89,7 @@ function startYourBattle (yourIndex, enemyIndex){
     
     fightTrainer = /*html*/` <img src="${newMyImage}"/><img src="${mistysPokemon[enemyIndex].imageSrc}"/>
                         <br/><br/><label for="ashsPokemon">${ashsPokemon[yourIndex].name} health:</label>
-                        <progress id="ashsPokemon" value="${ashsPokemonHealth}" max="100"></progress>
+                        <progress id="ashsPokemon" value="${ashsPokemonHealth}" max="100"></progress><br/>
                         <label for="facedPokemon">${mistysPokemon[enemyIndex].name} health:</label>
                         <progress id="facedPokemon" value="${facedPokemonHealth}" max="100"></progress><br/>
                         ${winningText}

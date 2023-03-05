@@ -139,7 +139,7 @@ function goInForest(){
      
      forest = /*html*/` <img src="${newMyImage}"/><img src="${randomPokemns[facedPokemonIndex].imageSrc}"/>
                          <br/><br/><label for="ashsPokemon">${ashsPokemon[ashsPokemonIndex].name} health:</label>
-                         <progress id="ashsPokemon" value="${ashsPokemonHealth}" max="100"></progress>
+                         <progress id="ashsPokemon" value="${ashsPokemonHealth}" max="100"></progress><br/>
                          <label for="facedPokemon">${randomPokemns[facedPokemonIndex].name} health:</label>
                          <progress id="facedPokemon" value="${facedPokemonHealth}" max="100"></progress><br/><br/>
                          ${winningText}`;
